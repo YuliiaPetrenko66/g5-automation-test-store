@@ -51,11 +51,17 @@ it('Registaration', () => {
   cy.log(`**USERNAME = ${username}**`)
 })
 
-it('Login user after registration', () => {
-  cy.visit('/');
 
-  cy.log('**Opening login form ...**');
-  cy.get('#customer_menu_top').click();
+it('Login user after registration...', () => {
+  cy.visit('/')
+
+  cy.log('**Opening login form**')
+  cy.get('#customer_menu_top').click()
+
+  cy.log('**Submit login form**')
+  cy.get('#loginFrm_loginname').type(user.loginName)
+  cy.get('#loginFrm_password').type(user.password)
+  cy.get("button[title='Login']").click()
 
   cy.log('**Submit login form ...**');
   cy.get('#loginFrm_loginname').type(user.loginName);
