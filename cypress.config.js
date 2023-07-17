@@ -8,6 +8,8 @@ module.exports = defineConfig({
     pageLoadTimeout: 90000,
   e2e: {
     baseUrl: 'https://automationteststore.com',
+    chromeWebSecurity: false,
+    "redirectionLimit": 30,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

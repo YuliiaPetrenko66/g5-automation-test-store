@@ -1,6 +1,23 @@
 import user from '../fixtures/user.json'
+import { faker } from '@faker-js/faker';
+import { loginViaUI } from '../support/helper.js';
+
+user.address = faker.location.streetAddress();
+  user.city = faker.location.city();
+  user.company = faker.company.name();
+  user.email = faker.internet.email();
+  user.fax = faker.phone.number();
+  user.firstName = faker.person.firstName();
+  user.lastName = faker.person.lastName();
+  user.loginName = faker.internet.userName();
+  user.password = faker.internet.password({length: 20});
+  user.phoneNumber = faker.phone.number('+380## ### ## ##');
+  user.zipCode = faker.location.zipCode();
+
+  let username = faker.internet.userName();
 
 it('Registaration', () => {
+
   cy.visit('/')
 
   cy.log('**Opening registration form...**')
@@ -31,22 +48,27 @@ it('Registaration', () => {
   cy.get('.btn.btn-orange.pull-right.lock-on-click').click()
   cy.get('.maintext').should('be.visible').and('contain', 'Your Account Has Been Created!')
 
+  cy.log(`**USERNAME = ${username}**`)
 })
 
-it('Login user after registration...', () => {
-  cy.visit('/')
+it('Login user after registration', () => {
+  cy.visit('/');
 
-  cy.log('**Opening login firm**')
-  cy.get('#customer_menu_top').click()
+  cy.log('**Opening login form ...**');
+  cy.get('#customer_menu_top').click();
 
-  cy.log('**Submit login firm**')
-  cy.get('#loginFrm_loginname').type(user.loginName)
-  cy.get('#loginFrm_password').type(user.password)
-  cy.get("button[title='Login']").click()
+  cy.log('**Submit login form ...**');
+  cy.get('#loginFrm_loginname').type(user.loginName);
+  cy.get('#loginFrm_password').type(user.password);
+  cy.get('#loginFrm button').click();
 
-  cy.log('**Verifying "My account" page...**')
-  cy.get('span.subtext').should('have.text', user.firstName)
-
-
-
+  cy.log('**Verifying "My account" page ...**');
+  cy.get('.heading1 .subtext').should('have.text', user.firstName);
 })
+
+it('Login user after registration (using helper function)', () => {
+  loginViaUI(user);
+  cy.log('**Verifying "My account" page ...**');
+  cy.get('.heading1 .subtext').should('have.text', user.firstName);
+})
+
