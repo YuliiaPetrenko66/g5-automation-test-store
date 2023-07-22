@@ -17,6 +17,3 @@ export function login2(loginName, password) {
 }
 
 
-  
-  
-  
