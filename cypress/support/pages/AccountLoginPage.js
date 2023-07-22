@@ -21,10 +21,23 @@ class AccountLoginPage extends BasePage {
         return cy.get('#loginFrm button');
     }
 
+    getForgotPasswordButton() {
+        return cy.get('.col-sm-6.returncustomer a');
+    }
+
+    getForgotLoginButton() {
+        return cy.get('.col-sm-6.returncustomer a');
+    }
+
+
     getErrorTextMessage(){
         return cy.get('.alert.alert-error.alert-danger');
     }
-       
+
+    getSuccessPasswordLoginResetLinkTextMessage(){
+        return cy.get('.alert.alert-success');
+    }
+    
 }
 export default new AccountLoginPage();
 

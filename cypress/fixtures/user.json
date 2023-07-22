@@ -11,5 +11,6 @@
   "zipCode": "02090",
   "country": "Ukraine",
   "loginName": "Yuliia053000",
-  "password": "pass1234"
+  "password": "pass1234",
+  "loginNameTrim": " Yuliia053000"
 }

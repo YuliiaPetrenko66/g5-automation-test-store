@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
 import {loginViaUI, login2} from '../support/helper';
 import accountLoginPage from '../support/pages/AccountLoginPage';
-import AccountReturningCustomerSuccessPage from '../support/pages/AccountReturningCustomerSuccessPage.js';
+import accountReturningCustomerSuccessPage from '../support/pages/AccountReturningCustomerSuccessPage.js';
 
 it('Login user with valid credentials', () => {
   accountLoginPage.visit()
@@ -15,7 +15,7 @@ it('Login user with valid credentials', () => {
 
   cy.log('**Verifying "My account" page ...**');
 
-  AccountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
+  accountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
 
 })
 
