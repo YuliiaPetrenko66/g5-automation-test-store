@@ -6,8 +6,7 @@ import accountReturningCustomerSuccessPage from '../support/pages/AccountReturni
 
 beforeEach(function () {
     homePage.visit();
-    //cy.visit('/')
-});
+})
 
 describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
@@ -30,12 +29,14 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
     it('Test Case 2: "Forgot your password?" link verifying ', function () {
 
+
         cy.log('**Opening Login form**');
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**"Forgot your password?" link clicking**');
 
         accountLoginPage.getForgotPasswordButton()
+
             .first()
             .click()
             .should('have.text', "Forgot your password?");
@@ -62,6 +63,7 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
     it('Test Case 3: "Forgot your login?" link verifying ', function () {
         cy.log('**Opening login form**');
+
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**"Forgot your login?" link clicking**');
@@ -71,6 +73,7 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
             .should('have.text', "Forgot your login?");
 
         cy.log('**"Forgot your login?" form verifying**');
+
         forgotCredentialsPage.getForgotPasswordLoginMessageText()
             .should('be.visible')
             .and('contain', "Forgot Your Login Name?");
@@ -89,6 +92,7 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
     it('Test Case 4: Password field is hidden (e.g., with asterisks)', function () {
         cy.log('**Opening login form**');
+
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**Submit login form/nodeName:"INPUT" verifying**');
@@ -105,12 +109,14 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
         cy.log('**Verifying "My account" page...**');
         accountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
+
     })
 
     it('Test Case 5: Login with valid credentials and spacers before LoginName', function () {
         //This TestCase is failed. Spacers are not truncated. 
         ///I don't have the requirements so I cann't proof that it's a defect
         cy.log('**Opening login form**');
+
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**Submit login form with spacers before loginName**');
@@ -123,10 +129,12 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
 
         cy.log('**Verifying "My account" page...**');
         accountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
+
     })
 
     it('Test Case 6: Submit Login form using Enter key', function () {
         cy.log('**Opening login form**');
+
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**Submit login form using Enter key **');
@@ -137,17 +145,21 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
         accountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
     });
 
+
     it('Test Case 7: Navigating through the Login form elements using keyboard', function () {
 
         cy.log('**Opening login form**');
+
         homePage.getLoginOrRegisterButton().click();
 
         cy.log('**Navigating through the Login form fields using Tab key **')
         accountLoginPage.getLoginName()
+
             .type(user.loginName)
             .focus()
             .tab()
         cy.focused().should('not.have.attr', 'id', 'loginFrm_loginname');
+
 
         accountLoginPage.getPassword()
             .type(user.password)
@@ -156,6 +168,7 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
         cy.focused().should('not.have.attr', 'id', 'loginFrm_password');
 
         cy.log('**"Forgot your password?" link navigating**');
+
         accountLoginPage.getForgotPasswordButton()
             .first()
             .should('have.text', "Forgot your password?")
@@ -165,6 +178,7 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
         cy.focused().should('not.have.attr', 'class', 'col-sm-6 returncustomer');
 
         cy.log('**"Forgot your login?" link navigating**');
+
         accountLoginPage.getForgotLoginButton()
             .last()
             .and('have.text', "Forgot your login?")
@@ -173,12 +187,15 @@ describe('Positive Test Suit for "ACCOUNT LOGIN" form', function () {
             .should('not.have.attr', 'class', 'col-sm-6.returncustomer');
 
         cy.log('**Submit login form using Enter key **');
+
         accountLoginPage.getLoginButton()
             .should('be.focused')
             .type('{enter}')
 
         cy.log('**Verifying "My account" page...**');
+
         accountReturningCustomerSuccessPage.getSuccessMessageLoginText().should('have.text', user.firstName);
+
     });
 })
 
