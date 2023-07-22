@@ -16,7 +16,5 @@ class CheckoutConfirmPage extends BasePage {
     getCheckOutButton() {
         return cy.get('#checkout_btn');
     }
-
-
 }
 export default new CheckoutConfirmPage();
