@@ -2,16 +2,24 @@ import user from '../fixtures/user.json';
 import productList from '../fixtures/product.json';
 //import { faker } from '@faker-js/faker';
 import { loginViaUI } from '../support/helper.js';
-import { findProductByName, proceedToCheckout } from '../support/searchProductHelper.js';
+import { findProductByName} from '../support/searchProductHelper.js';
+import accountLoginPage from '../support/pages/AccountLoginPage';
+import homePage from '../support/pages/HomePage';
 
 it('Place order', () => {
 
-    loginViaUI(user);
+    accountLoginPage.visit()
+
+    cy.log('**Submit login form ...**');
+
+    accountLoginPage.getLoginName().type(user.loginName);
+    accountLoginPage.getPassword().type(user.password);
+    accountLoginPage.getLoginButton().click();
 
     cy.log('Product searching');
-    cy.visit('/');
-
-    cy.get('input#filter_keyword').type('c{enter}');
+    
+    homePage.visit();
+    homePage.getSearchField().type('c{enter}');
     findProductByName(productList, user);
 })
 
