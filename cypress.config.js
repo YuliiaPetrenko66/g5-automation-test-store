@@ -7,7 +7,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 40000,
     pageLoadTimeout: 90000,
   e2e: {
-    baseUrl: 'https://automationteststore.com',
+   baseUrl: 'https://automationteststore.com',
     chromeWebSecurity: false,
     "redirectionLimit": 30,
     setupNodeEvents(on, config) {
