@@ -33,12 +33,26 @@ it('Successful registration', () => {
   accountSuccessPage.getSuccessMessageText().should('be.visible').and('contain', 'Your Account Has Been Created!');
 })
 
+
 it('Login user after registration', () => {
   homePage.visit();
 
   cy.log('**Opening login form ...**');
 
   homePage.getLoginOrRegisterButton().click();
+
+
+it('Login user after registration...', () => {
+  cy.visit('/')
+
+  cy.log('**Opening login form**')
+  cy.get('#customer_menu_top').click()
+
+  cy.log('**Submit login form**')
+  cy.get('#loginFrm_loginname').type(user.loginName)
+  cy.get('#loginFrm_password').type(user.password)
+  cy.get("button[title='Login']").click()
+
 
   cy.log('**Submit login form ...**');
 
@@ -87,4 +101,5 @@ it('Unsuccessful registration attempt without first name', () => {
   accountLoginPage.getRegisterButton().click();
   accountCreatePage.fillInRegistrationForm(userWithoutFirstName);
   accountCreatePage.getErrorMessageText().should('have.text', '\n×\nFirst Name must be between 1 and 32 characters!')
+})
 })
