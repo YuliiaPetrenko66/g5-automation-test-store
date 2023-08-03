@@ -1,0 +1,90 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-08-02T17:57:22.160Z",
+    "end": "2023-08-02T17:58:05.655Z",
+    "duration": 43495,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b06563b3-c88d-43e7-9f41-39feff1f8712",
+      "title": "",
+      "fullFile": "cypress\\e2e\\authorizationAPI.cy.js",
+      "file": "cypress\\e2e\\authorizationAPI.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "Login user with valid credentials",
+          "fullTitle": "Login user with valid credentials",
+          "timedOut": null,
+          "duration": 43273,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": null,
+          "code": "cy.log('Trying to login user...');\n_AccountLoginPage.default.visit();\n(0, _helperAPI.loginWithApi)(_userApi.default);\n_AccountLoginPage.default.getLoginButton().click();\ncy.log('**Verifying \"My account\" page ...**');\n_AccountReturningCustomerSuccessPage.default.getSuccessMessageLoginText().should('have.text', _userApi.default.firstName);",
+          "err": {
+            "message": "AssertionError: Timed out retrying after 40000ms: expected '<span.subtext>' to have text 'Yuliia', but the text was ''",
+            "estack": "AssertionError: Timed out retrying after 40000ms: expected '<span.subtext>' to have text 'Yuliia', but the text was ''\n    at Context.eval (webpack:///./cypress/e2e/authorizationAPI.cy.js:16:69)",
+            "diff": "+ 'Yuliia'\n"
+          },
+          "uuid": "e5393829-401f-4db3-b089-9318e58f76f5",
+          "parentUUID": "b06563b3-c88d-43e7-9f41-39feff1f8712",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "e5393829-401f-4db3-b089-9318e58f76f5"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 43273,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

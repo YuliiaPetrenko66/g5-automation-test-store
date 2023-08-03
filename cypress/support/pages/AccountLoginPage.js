@@ -34,10 +34,20 @@ class AccountLoginPage extends BasePage {
         return cy.get('.alert.alert-error.alert-danger');
     }
 
+<<<<<<< HEAD
     getSuccessPasswordLoginResetLinkTextMessage(){
         return cy.get('.alert.alert-success');
     }
     
+=======
+    getCsrToken(){
+        return cy.get('input[name="csrftoken"]')
+    } 
+
+    getCsrInstance(){
+        return cy.get('input[name="csrfinstance"]')
+    }
+>>>>>>> feature/lecture-automation-test-store
 }
 export default new AccountLoginPage();
 
