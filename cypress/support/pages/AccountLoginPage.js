@@ -24,7 +24,14 @@ class AccountLoginPage extends BasePage {
     getErrorTextMessage(){
         return cy.get('.alert.alert-error.alert-danger');
     }
-       
+
+    getCsrToken(){
+        return cy.get('input[name="csrftoken"]')
+    } 
+
+    getCsrInstance(){
+        return cy.get('input[name="csrfinstance"]')
+    }
 }
 export default new AccountLoginPage();
 
